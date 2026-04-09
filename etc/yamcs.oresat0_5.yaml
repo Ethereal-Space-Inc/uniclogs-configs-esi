@@ -122,7 +122,7 @@ dataLinks:
       commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
       commandPostprocessorArgs:
         errorDetection:
-          type: 16-SUM
+          type: "CRC-16-CCIIT"
         enforceEvenNumberOfBytes: true
 
     # CFDP Virtual Channel
@@ -134,7 +134,7 @@ dataLinks:
       commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
       commandPostprocessorArgs:
         errorDetection:
-          type: 16-SUM
+          type: "CRC-16-CCIIT"
         enforceEvenNumberOfBytes: true
 
 mdb:

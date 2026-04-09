@@ -621,115 +621,70 @@
           </ContainerRefEntry>
         </EntryList>
       </SequenceContainer>
-      <SequenceContainer name="uslp_header" abstract="true">
-        <EntryList>
-          <ParameterRefEntry parameterRef="uslp_version_number" />
-          <ParameterRefEntry parameterRef="uslp_spacecraft_id" />
-          <ParameterRefEntry parameterRef="uslp_src_dest" />
-          <ParameterRefEntry parameterRef="uslp_virtual_channel_id" />
-          <ParameterRefEntry parameterRef="uslp_map_id" />
-          <ParameterRefEntry parameterRef="uslp_eof_flag" />
-          <ParameterRefEntry parameterRef="uslp_frame_length" />
-          <ParameterRefEntry parameterRef="uslp_bypass_sequence_control_flag" />
-          <ParameterRefEntry parameterRef="uslp_protocol_control_command_flag" />
-          <ParameterRefEntry parameterRef="uslp_reserved" />
-          <ParameterRefEntry parameterRef="uslp_operation_control_field_flag" />
-          <ParameterRefEntry parameterRef="uslp_vc_frame_count_length" />
-          <ParameterRefEntry parameterRef="uslp_sequence_number" />
-          <ParameterRefEntry parameterRef="uslp_tfdz_contruction_rules" />
-          <ParameterRefEntry parameterRef="uslp_protocol_id" />
-          
-          <!--child containers go here-->
-          <ParameterRefEntry parameterRef="hmac">
-            <LocationInContainerInBits>
-              <FixedValue>272</FixedValue>
-            </LocationInContainerInBits>
-          </ParameterRefEntry>
-
-          <ParameterRefEntry parameterRef="uslp_fecf">
-            <LocationInContainerInBits>
-              <FixedValue>16</FixedValue>
-            </LocationInContainerInBits>
-          </ParameterRefEntry>
-        </EntryList>
-      </SequenceContainer>
       <SequenceContainer name="tx_control_response">
         <EntryList>
           <ParameterRefEntry parameterRef="tx_control_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="co_node_enable_response">
         <EntryList>
           <ParameterRefEntry parameterRef="co_node_enable_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="co_node_status_response">
         <EntryList>
           <ParameterRefEntry parameterRef="co_node_status_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="co_sdo_write_response">
         <EntryList>
           <ParameterRefEntry parameterRef="co_sdo_write_error_code" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="co_sync_response">
         <EntryList>
           <ParameterRefEntry parameterRef="co_sync_sent" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_sysenable_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_sysenable_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_scan_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_scan_nodes_found" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_probe_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_probe_found" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_enable_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_enable_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_reset_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_reset_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="opd_status_response">
         <EntryList>
           <ParameterRefEntry parameterRef="opd_status_status" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="time_sync_response">
         <EntryList>
           <ParameterRefEntry parameterRef="time_sync_sent" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="ping_response">
         <EntryList>
           <ParameterRefEntry parameterRef="ping_value" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
       <SequenceContainer name="co_sdo_read_response">
         <EntryList>
@@ -737,7 +692,6 @@
           <ParameterRefEntry parameterRef="co_sdo_read_buffer_size" />
           <ParameterRefEntry parameterRef="co_sdo_read_buffer" />
         </EntryList>
-        <BaseContainer containerRef="uslp_header" />
       </SequenceContainer>
     </ContainerSet>
   </TelemetryMetaData>
@@ -812,27 +766,6 @@
       </BinaryArgumentType>
     </ArgumentTypeSet>
     <MetaCommandSet>
-      <MetaCommand name="uslp_header" abstract="true">
-        <CommandContainer name="uslp_header">
-          <EntryList>
-            <FixedValueEntry name="uslp_version_number" binaryValue="0C" sizeInBits="4" />
-            <FixedValueEntry name="uslp_spacecraft_id" binaryValue="4F53" sizeInBits="16" />
-            <FixedValueEntry name="uslp_src_dest" binaryValue="00" sizeInBits="1" />
-            <FixedValueEntry name="uslp_virtual_channel_id" binaryValue="00" sizeInBits="6" />
-            <FixedValueEntry name="uslp_map_id" binaryValue="00" sizeInBits="4" />
-            <FixedValueEntry name="uslp_eof_flag" binaryValue="00" sizeInBits="1" />
-            <FixedValueEntry name="uslp_frame_length" binaryValue="0000" sizeInBits="16" />
-            <FixedValueEntry name="uslp_bypass_sequence_control_flag" binaryValue="00" sizeInBits="1" />
-            <FixedValueEntry name="uslp_protocol_control_command_flag" binaryValue="00" sizeInBits="1" />
-            <FixedValueEntry name="uslp_reserved" binaryValue="00" sizeInBits="2" />
-            <FixedValueEntry name="uslp_operation_control_field_flag" binaryValue="00" sizeInBits="1" />
-            <FixedValueEntry name="uslp_vc_frame_count_length" binaryValue="00" sizeInBits="3" />
-            <FixedValueEntry name="uslp_sequence_number" binaryValue="00000000" sizeInBits="32" />
-            <FixedValueEntry name="uslp_tfdz_contruction_rules" binaryValue="07" sizeInBits="3" />
-            <FixedValueEntry name="uslp_protocol_id" binaryValue="05" sizeInBits="5" />
-          </EntryList>
-        </CommandContainer>
-      </MetaCommand>
       <MetaCommand name="tx_control" shortDescription="enable / disable tx">
         <ArgumentList>
           <Argument name="enable" argumentTypeRef="bool_type" />
@@ -844,7 +777,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="c3_soft_reset" shortDescription="soft reset the c3 (reboot c3 daemon)">
@@ -854,7 +786,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="c3_hard_reset" shortDescription="hard reset the c3 (reboot system)">
@@ -864,7 +795,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="c3_factory_reset" shortDescription="factory reset the c3 (clear FRAM, reset RTC, and reboot system)">
@@ -874,7 +804,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="co_node_enable" shortDescription="enable a CANopen node">
@@ -890,7 +819,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="co_node_status" shortDescription="get the status of a CANopen node">
@@ -904,7 +832,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="co_sdo_write" shortDescription="write a value to a node's OD over the CAN bus using a CANopen SDO message">
@@ -926,7 +853,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="co_sync" shortDescription="send a CANopen SYNC message on the CAN bus">
@@ -936,7 +862,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_sysenable" shortDescription="enable the OPD subsystem">
@@ -950,7 +875,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_scan" shortDescription="scan for all nodes on the OPD">
@@ -960,7 +884,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_probe" shortDescription="probe for a node on the OPD">
@@ -974,7 +897,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_enable" shortDescription="enable / disable a node on the OPD">
@@ -990,7 +912,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_reset" shortDescription="reset a node on the OPD">
@@ -1004,7 +925,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="opd_status" shortDescription="get the status of a node on the OPD">
@@ -1018,7 +938,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="rtc_set_time" shortDescription="set the RTC time">
@@ -1032,7 +951,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="time_sync" shortDescription="c3 will send OreSat's time sync TPDO over the CAN bus (all nodes that are powered on and care about time will sync to it)">
@@ -1042,7 +960,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="beacon_ping" shortDescription="c3 will response with a beacon regardless of tx state">
@@ -1052,7 +969,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="ping" shortDescription="a basic ping to the c3">
@@ -1066,7 +982,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="rx_test" shortDescription="empty command for c3 Rx testing">
@@ -1076,7 +991,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
       <MetaCommand name="co_sdo_read" shortDescription="read a value from a node's OD over the CAN bus using a CANopen SDO message">
@@ -1094,7 +1008,6 @@
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-          <BaseContainer containerRef="uslp_header" />
         </CommandContainer>
       </MetaCommand>
     </MetaCommandSet>
