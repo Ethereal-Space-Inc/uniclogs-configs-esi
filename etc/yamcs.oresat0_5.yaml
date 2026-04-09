@@ -119,11 +119,12 @@ dataLinks:
       priority: 0
       maxPacketLength: 1024
       stream: tcr_edl
-      commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
-      commandPostprocessorArgs:
-        errorDetection:
-          type: "CRC-16-CCIIT"
-        enforceEvenNumberOfBytes: true
+      vcfCountLength: 4
+      # commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
+      # commandPostprocessorArgs:
+      #   errorDetection:
+      #     type: "CRC-16-CCIIT"
+      #   enforceEvenNumberOfBytes: true
 
     # CFDP Virtual Channel
     - vcId: 1

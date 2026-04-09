@@ -980,7 +980,7 @@
             <FixedValueEntry binaryValue="11" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="value" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
+            <!-- <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" /> -->
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -1006,7 +1006,6 @@
             <ArgumentRefEntry argumentRef="index" />
             <ArgumentRefEntry argumentRef="subindex" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
