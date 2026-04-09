@@ -104,10 +104,10 @@ dataLinks:
 
   - name: tc_edl
     class: org.yamcs.tctm.ccsds.UdpTcFrameLink
-    errorDetection: NONE
+    errorDetection: CRC16
     priorityScheme: ABSOLUTE
-    stream: tcr_edl
     host: localhost # GS-Modem Address
+    frameType: USLP # Process all TM with USLP header
     port: 10025 # GS-Modem USLP telecommand port
     spacecraftId: 0x4F53 # "OS" in ASCII
     maxFrameLength: 4096 # Global max packet-size 4 kb
@@ -118,6 +118,7 @@ dataLinks:
       service: PACKET
       priority: 0
       maxPacketLength: 1024
+      stream: tcr_edl
       commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
       commandPostprocessorArgs:
         errorDetection:
