@@ -258,7 +258,7 @@
         <BinaryDataEncoding bitOrder="leastSignificantBitFirst">
           <SizeInBits>
             <DynamicValue>
-              <ParameterInstanceRef parameterRef="co_sdo_read_buffer_size" />
+              <ParameterInstanceRef parameterRef="adj_read_buffer_size" />
             </DynamicValue>
           </SizeInBits>
         </BinaryDataEncoding>
@@ -418,6 +418,7 @@
       <Parameter name="ping_value" parameterTypeRef="uint32_type" shortDescription="the parameter value" />
       <Parameter name="co_sdo_read_error_code" parameterTypeRef="uint32_type" shortDescription="SDO error code (0 is no error)" />
       <Parameter name="co_sdo_read_buffer_size" parameterTypeRef="co_sdo_read_buffer_type" />
+      <Parameter name="adj_read_buffer_size" parameterTypeRef="co_sdo_read_buffer_type" />
       <Parameter name="co_sdo_read_buffer" parameterTypeRef="bytes_type" shortDescription="data buffer" />
     </ParameterSet>
     <ContainerSet>
@@ -551,72 +552,72 @@
           <ParameterRefEntry parameterRef="edl_command_code" />
           <ContainerRefEntry containerRef="tx_control_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="0" />
+              <Comparison parameterRef="edl_command_code" value="tx_control" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="co_node_enable_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="4" />
+              <Comparison parameterRef="edl_command_code" value="co_node_enable" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="co_node_status_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="5" />
+              <Comparison parameterRef="edl_command_code" value="co_node_status" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="co_sdo_write_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="6" />
+              <Comparison parameterRef="edl_command_code" value="co_sdo_write" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="co_sync_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="7" />
+              <Comparison parameterRef="edl_command_code" value="co_sync" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_sysenable_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="8" />
+              <Comparison parameterRef="edl_command_code" value="opd_sysenable" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_scan_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="9" />
+              <Comparison parameterRef="edl_command_code" value="opd_scan" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_probe_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="10" />
+              <Comparison parameterRef="edl_command_code" value="opd_probe" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_enable_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="11" />
+              <Comparison parameterRef="edl_command_code" value="opd_enable" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_reset_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="12" />
+              <Comparison parameterRef="edl_command_code" value="opd_reset" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="opd_status_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="13" />
+              <Comparison parameterRef="edl_command_code" value="opd_status" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="time_sync_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="15" />
+              <Comparison parameterRef="edl_command_code" value="time_sync" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="ping_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="17" />
+              <Comparison parameterRef="edl_command_code" value="ping" />
             </IncludeCondition>
           </ContainerRefEntry>
           <ContainerRefEntry containerRef="co_sdo_read_response">
             <IncludeCondition>
-              <Comparison parameterRef="edl_command_code" value="19" />
+              <Comparison parameterRef="edl_command_code" value="co_sdo_read" />
             </IncludeCondition>
           </ContainerRefEntry>
         </EntryList>
@@ -624,6 +625,7 @@
       <SequenceContainer name="tx_control_response">
         <EntryList>
           <ParameterRefEntry parameterRef="tx_control_status" />
+          <ParameterRefEntry parameterRef="hmac" />
         </EntryList>
       </SequenceContainer>
       <SequenceContainer name="co_node_enable_response">
@@ -689,11 +691,24 @@
       <SequenceContainer name="co_sdo_read_response">
         <EntryList>
           <ParameterRefEntry parameterRef="co_sdo_read_error_code" />
-          <ParameterRefEntry parameterRef="co_sdo_read_buffer_size" />
+          <ParameterRefEntry parameterRef="co_sdo_read_buffer_size" />  
           <ParameterRefEntry parameterRef="co_sdo_read_buffer" />
+          <ParameterRefEntry parameterRef="hmac" />
         </EntryList>
       </SequenceContainer>
     </ContainerSet>
+    <AlgorithmSet>
+      <MathAlgorithm name="buffer_size_correction">
+        <MathOperation outputParameterRef="adj_read_buffer_size" name="hell">
+          <ParameterInstanceRefOperand parameterRef="co_sdo_read_buffer_size"/>
+          <ValueOperand>8</ValueOperand>
+          <Operator>*</Operator>
+          <TriggerSet>
+            <OnParameterUpdateTrigger parameterRef="co_sdo_read_buffer_size" />
+          </TriggerSet>
+        </MathOperation>
+      </MathAlgorithm>
+    </AlgorithmSet>
   </TelemetryMetaData>
   <CommandMetaData>
     <ArgumentTypeSet>
@@ -744,7 +759,7 @@
       </BooleanArgumentType>
       <IntegerArgumentType name="uint16_type">
         <UnitSet />
-        <IntegerDataEncoding sizeInBits="16" encoding="unsigned" />
+        <IntegerDataEncoding sizeInBits="16" byteOrder="leastSignificantByteFirst" encoding="unsigned" />
       </IntegerArgumentType>
       <IntegerArgumentType name="uint8_type">
         <UnitSet />
@@ -752,7 +767,7 @@
       </IntegerArgumentType>
       <IntegerArgumentType name="uint32_type">
         <UnitSet />
-        <IntegerDataEncoding sizeInBits="32" encoding="unsigned" />
+        <IntegerDataEncoding sizeInBits="32" byteOrder="leastSignificantByteFirst" encoding="unsigned" />
       </IntegerArgumentType>
       <BinaryArgumentType name="bytes_type">
         <UnitSet />
@@ -775,7 +790,6 @@
             <FixedValueEntry binaryValue="00" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="enable" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -784,7 +798,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="01" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -793,7 +806,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="02" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -802,7 +814,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="03" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -817,7 +828,6 @@
             <ArgumentRefEntry argumentRef="node_id" />
             <ArgumentRefEntry argumentRef="enable" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -830,7 +840,6 @@
             <FixedValueEntry binaryValue="05" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="node_id" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -851,7 +860,6 @@
             <ArgumentRefEntry argumentRef="buffer_size" />
             <ArgumentRefEntry argumentRef="buffer" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -860,9 +868,9 @@
           <EntryList>
             <FixedValueEntry binaryValue="07" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
-        </CommandContainer>
+        </CommandContainer>	- 	
+
       </MetaCommand>
       <MetaCommand name="opd_sysenable" shortDescription="enable the OPD subsystem">
         <ArgumentList>
@@ -873,7 +881,6 @@
             <FixedValueEntry binaryValue="08" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="enable" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -882,7 +889,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="09" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -895,7 +901,6 @@
             <FixedValueEntry binaryValue="0A" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -910,7 +915,6 @@
             <ArgumentRefEntry argumentRef="opd_addr" />
             <ArgumentRefEntry argumentRef="enable" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -923,7 +927,6 @@
             <FixedValueEntry binaryValue="0C" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -936,7 +939,6 @@
             <FixedValueEntry binaryValue="0D" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -949,7 +951,6 @@
             <FixedValueEntry binaryValue="0E" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="time" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -958,7 +959,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="0F" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -967,7 +967,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="10" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -989,7 +988,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="12" sizeInBits="8" />
             <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
-            <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>

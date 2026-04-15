@@ -72,24 +72,27 @@ dataLinks:
 
   - name: tm_edl
     class: org.yamcs.tctm.ccsds.UdpTmFrameLink
-    errorDetection: NONE
+    errorDetection: CRC16
     port: 10016 # GS-Modem USLP telemetry port
     frameType: USLP # Process all TM with USLP header
     spacecraftId: 0x4F53 # "OS" in ASCII
     badFrameStream: invalid_tm_stream # Process unrecognized TM here
-    maxFrameLength: 4096 # Global max packet-size 4 kb
+    minFrameLength: 14 # 7 + 4 + 1 + 2. Needed so that insert zone doesn't throw an error.
+    maxFrameLength: 65535 # Global max packet-size 2^16 B
+    insertZoneLength: 4
     virtualChannels:
       # EDL Virtual Channel
       - vcId: 0
-        ocfPresent: false
-        service: PACKET
-        maxPacketLength: 1024
+        service: VCA # tells yamcs to use a custom handler instead of the default space/encaps packets handler.
         stream: tmr_edl
-        errorDetection: none
-        stripEncapsulationHeader: true
-        packetPreprocessorClassName: org.yamcs.tctm.IssPacketPreprocessor
-        packetPreprocessorArgs:
-          packetSize: 1024
+        vcaHandlerClassName: org.uniclogs.yamcs.tctm.VcEdlDownlinkHandler
+        packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
+        packetPreprocessorArgs: # while it appears that this does nothing, this is required by yamcs.
+          timestampOffset: -1 # If the edl is changed to have sequence numbers outside the insert zone, these
+          seqCountOffset: -1 # should be handled by the preprocessor with these configuration flags.
+          errorDetection:
+            type: "NONE"  # the crc is already checked as part of the USLP frame. Because the edl uses uslp
+                          # frames as packets, edl processing does not need to check this.
 
       # CFDP Virtual Channel
       - vcId: 1
@@ -100,7 +103,7 @@ dataLinks:
         stripEncapsulationHeader: true
         packetPreprocessorClassName: org.yamcs.tctm.IssPacketPreprocessor
         packetPreprocessorArgs:
-          packetSize: 1024
+          packetSize: 65000 # TODO: set this to the max CFDP in USLP packet size
 
   - name: tc_edl
     class: org.yamcs.tctm.ccsds.UdpTcFrameLink
@@ -110,16 +113,16 @@ dataLinks:
     frameType: USLP # Process all TM with USLP header
     port: 10025 # GS-Modem USLP telecommand port
     spacecraftId: 0x4F53 # "OS" in ASCII
-    maxFrameLength: 4096 # Global max packet-size 4 kb
+    maxFrameLength: 65535 # Global max packet-size 4 kb
+    insertZoneLength: 4
 
     virtualChannels:
     # EDL Virtual Channel
     - vcId: 0
       service: PACKET
       priority: 0
-      maxPacketLength: 1024
-      stream: tcr_edl
-      vcfCountLength: 4
+      maxPacketLength: 65000 # TODO: set this to the max EDL in USLP packet size
+      stream: tcr_edl 
       # commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
       # commandPostprocessorArgs:
       #   errorDetection:
@@ -130,7 +133,7 @@ dataLinks:
     - vcId: 1
       service: PACKET
       priority: 0
-      maxPacketLength: 2048
+      maxPacketLength: 65000 # TODO: set this to the max CFDP in USLP packet size
       stream: cfdp_out
       commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
       commandPostprocessorArgs:
@@ -149,6 +152,7 @@ streamConfig:
     
     - name: tmr_edl
       processor: realtime
+      rootContainer: /oresat0_5/edl_responses
     
     - name: tmd_debug
 
