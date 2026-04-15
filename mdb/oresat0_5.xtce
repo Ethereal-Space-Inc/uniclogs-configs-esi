@@ -258,7 +258,8 @@
         <BinaryDataEncoding bitOrder="leastSignificantBitFirst">
           <SizeInBits>
             <DynamicValue>
-              <ParameterInstanceRef parameterRef="adj_read_buffer_size" />
+              <ParameterInstanceRef parameterRef="co_sdo_read_buffer_size" />
+              <LinearAdjustment slope="8"/>
             </DynamicValue>
           </SizeInBits>
         </BinaryDataEncoding>
@@ -418,7 +419,6 @@
       <Parameter name="ping_value" parameterTypeRef="uint32_type" shortDescription="the parameter value" />
       <Parameter name="co_sdo_read_error_code" parameterTypeRef="uint32_type" shortDescription="SDO error code (0 is no error)" />
       <Parameter name="co_sdo_read_buffer_size" parameterTypeRef="co_sdo_read_buffer_type" />
-      <Parameter name="adj_read_buffer_size" parameterTypeRef="co_sdo_read_buffer_type" />
       <Parameter name="co_sdo_read_buffer" parameterTypeRef="bytes_type" shortDescription="data buffer" />
     </ParameterSet>
     <ContainerSet>
@@ -697,18 +697,6 @@
         </EntryList>
       </SequenceContainer>
     </ContainerSet>
-    <AlgorithmSet>
-      <MathAlgorithm name="buffer_size_correction">
-        <MathOperation outputParameterRef="adj_read_buffer_size" name="hell">
-          <ParameterInstanceRefOperand parameterRef="co_sdo_read_buffer_size"/>
-          <ValueOperand>8</ValueOperand>
-          <Operator>*</Operator>
-          <TriggerSet>
-            <OnParameterUpdateTrigger parameterRef="co_sdo_read_buffer_size" />
-          </TriggerSet>
-        </MathOperation>
-      </MathAlgorithm>
-    </AlgorithmSet>
   </TelemetryMetaData>
   <CommandMetaData>
     <ArgumentTypeSet>
