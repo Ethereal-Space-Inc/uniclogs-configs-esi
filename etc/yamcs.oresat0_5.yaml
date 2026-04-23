@@ -79,15 +79,18 @@ dataLinks:
     badFrameStream: invalid_tm_stream # Process unrecognized TM here
     minFrameLength: 14 # 7 + 4 + 1 + 2. Needed so that insert zone doesn't throw an error.
     maxFrameLength: 65535 # Global max packet-size 2^16 B
-    insertZoneLength: 4
+    clcwStream: "clcw" #publish the received CLCW (OCF field) to this stream
+    insertZoneLength: 0
     virtualChannels:
       # EDL Virtual Channel
       - vcId: 0
         service: VCA # tells yamcs to use a custom handler instead of the default space/encaps packets handler.
         stream: tmr_edl
+        useCop1: true
         vcaHandlerClassName: org.uniclogs.yamcs.tctm.VcEdlDownlinkHandler
+        vcfCountLength: 2 # number of bytes used for the VC frame count field (0-7)
         packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
-        packetPreprocessorArgs: # while it appears that this does nothing, this is required by yamcs.
+        packetPreprocessorArgs: # this does nothing, but it is required by yamcs.
           timestampOffset: -1 # If the edl is changed to have sequence numbers outside the insert zone, these
           seqCountOffset: -1 # should be handled by the preprocessor with these configuration flags.
           errorDetection:
@@ -108,19 +111,23 @@ dataLinks:
   - name: tc_edl
     class: org.yamcs.tctm.ccsds.UdpTcFrameLink
     errorDetection: CRC16
-    priorityScheme: ABSOLUTE
+    # priorityScheme: ABSOLUTE
     host: localhost # GS-Modem Address
     frameType: USLP # Process all TM with USLP header
     port: 10025 # GS-Modem USLP telecommand port
     spacecraftId: 0x4F53 # "OS" in ASCII
     maxFrameLength: 65535 # Global max packet-size 4 kb
-    insertZoneLength: 4
+    insertZoneLength: 0
 
     virtualChannels:
     # EDL Virtual Channel
     - vcId: 0
       service: PACKET
       priority: 0
+      useCop1: true
+      vcfCountLength: 2 # number of bytes used for the VC frame count field (0-7)
+      clcwStream: "clcw" #publish the received CLCW (OCF field) to this stream
+      initialClcwWait: 3600
       maxPacketLength: 65000 # TODO: set this to the max EDL in USLP packet size
       stream: tcr_edl 
       # commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
@@ -183,4 +190,4 @@ streamConfig:
   invalidTm: invalid_tm_stream
   parameterAlarm: [ alarms_realtime ]
   eventAlarm: [ event_alarms_realtime ]
-  #sqlFile: etc/extra_streams.sql
+  sqlFile: etc/extra_streams.sql
