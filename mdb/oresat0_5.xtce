@@ -763,6 +763,7 @@
           <SizeInBits>
             <DynamicValue>
               <ArgumentInstanceRef argumentRef="buffer_size" />
+              <LinearAdjustment slope="8"/>
             </DynamicValue>
           </SizeInBits>
         </BinaryDataEncoding>

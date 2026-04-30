@@ -31,7 +31,7 @@ services:
     args:
      inactivityTimeout: 30000
      sequenceNrLength: 4
-     maxPduSize: 2048
+     maxPduSize: 978  # Max size that can fit in a 1024 max size USLP frame
      incomingBucket: groundstation
      allowRemoteProvidedBucket: false
      allowRemoteProvidedSubdirectory: false
@@ -82,6 +82,7 @@ dataLinks:
     frameType: USLP # Process all TM with USLP header
     spacecraftId: 0x4F53 # "OS" in ASCII
     badFrameStream: invalid_tm_stream # Process unrecognized TM here
+    clcwStream: "clcw" #publish the received CLCW (OCF field) to this stream
     minFrameLength: 14 # 7 + 4 + 1 + 2. Needed so that insert zone doesn't throw an error.
     maxFrameLength: 65535 # Global max packet-size 2^16 B
     insertZoneLength: 4
@@ -90,6 +91,8 @@ dataLinks:
       - vcId: 0
         service: VCA # tells yamcs to use a custom handler instead of the default space/encaps packets handler.
         stream: tmr_edl
+        useCop1: true
+        vcfCountLength: 2 # number of bytes used for the VC frame count field (0-7)
         vcaHandlerClassName: org.uniclogs.yamcs.tctm.VcEdlDownlinkHandler
         packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
         packetPreprocessorArgs: # while it appears that this does nothing, this is required by yamcs.
@@ -132,6 +135,10 @@ dataLinks:
     - vcId: 0
       service: PACKET
       priority: 0
+      useCop1: true
+      vcfCountLength: 2 # number of bytes used for the VC frame count field (0-7)
+      clcwStream: "clcw" #publish the received CLCW (OCF field) to this stream
+      initialClcwWait: 3600
       maxPacketLength: 1000 # Changing this temporarily because the c3 isn't setup to get USLP frames larger than 1024
       stream: tcr_edl 
       # commandPostprocessorClassName: org.yamcs.tctm.IssCommandPostprocessor
