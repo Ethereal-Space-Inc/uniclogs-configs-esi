@@ -778,7 +778,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="00" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="enable" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -786,7 +785,6 @@
         <CommandContainer name="c3_soft_reset_request">
           <EntryList>
             <FixedValueEntry binaryValue="01" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -794,7 +792,6 @@
         <CommandContainer name="c3_hard_reset_request">
           <EntryList>
             <FixedValueEntry binaryValue="02" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -802,7 +799,6 @@
         <CommandContainer name="c3_factory_reset_request">
           <EntryList>
             <FixedValueEntry binaryValue="03" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -816,7 +812,6 @@
             <FixedValueEntry binaryValue="04" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="node_id" />
             <ArgumentRefEntry argumentRef="enable" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -828,7 +823,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="05" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="node_id" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -848,7 +842,6 @@
             <ArgumentRefEntry argumentRef="subindex" />
             <ArgumentRefEntry argumentRef="buffer_size" />
             <ArgumentRefEntry argumentRef="buffer" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -856,7 +849,6 @@
         <CommandContainer name="co_sync_request">
           <EntryList>
             <FixedValueEntry binaryValue="07" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>	- 	
 
@@ -869,7 +861,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="08" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="enable" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -877,7 +868,6 @@
         <CommandContainer name="opd_scan_request">
           <EntryList>
             <FixedValueEntry binaryValue="09" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -889,7 +879,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="0A" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -903,7 +892,6 @@
             <FixedValueEntry binaryValue="0B" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
             <ArgumentRefEntry argumentRef="enable" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -915,7 +903,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="0C" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -927,7 +914,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="0D" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="opd_addr" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -939,7 +925,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="0E" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="time" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -947,7 +932,6 @@
         <CommandContainer name="time_sync_request">
           <EntryList>
             <FixedValueEntry binaryValue="0F" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -955,7 +939,6 @@
         <CommandContainer name="beacon_ping_request">
           <EntryList>
             <FixedValueEntry binaryValue="10" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -967,7 +950,6 @@
           <EntryList>
             <FixedValueEntry binaryValue="11" sizeInBits="8" />
             <ArgumentRefEntry argumentRef="value" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
             <!-- <FixedValueEntry name="uslp_fecf" binaryValue="0000" sizeInBits="16" /> -->
           </EntryList>
         </CommandContainer>
@@ -976,7 +958,6 @@
         <CommandContainer name="rx_test_request">
           <EntryList>
             <FixedValueEntry binaryValue="12" sizeInBits="8" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>
@@ -992,7 +973,6 @@
             <ArgumentRefEntry argumentRef="node_id" />
             <ArgumentRefEntry argumentRef="index" />
             <ArgumentRefEntry argumentRef="subindex" />
-            <FixedValueEntry name="hmac" binaryValue="0000000000000000000000000000000000000000000000000000000000000000" sizeInBits="256" />
           </EntryList>
         </CommandContainer>
       </MetaCommand>

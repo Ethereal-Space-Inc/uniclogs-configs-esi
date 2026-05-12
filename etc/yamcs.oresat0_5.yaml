@@ -85,15 +85,15 @@ dataLinks:
     clcwStream: "clcw" #publish the received CLCW (OCF field) to this stream
     minFrameLength: 14 # 7 + 4 + 1 + 2. Needed so that insert zone doesn't throw an error.
     maxFrameLength: 65535 # Global max packet-size 2^16 B
-    # encryption:
-    #   - spi: 1
-    #     class: org.uniclogs.yamcs.security.sdls.SecurityAssociationOresatSdlsFactory
-    #     args:
-    #       keyFile: etc/oresat_key
+    encryption:
+      - spi: 1
+        class: org.uniclogs.yamcs.security.sdls.SecurityAssociationOresatSdlsFactory
+        args:
+          keyFile: etc/oresat_key
     virtualChannels:
       # EDL Virtual Channel
       - vcId: 0
-        # encryptionSpi: 1
+        encryptionSpi: 1
         service: VCA # tells yamcs to use a custom handler instead of the default space/encaps packets handler.
         stream: tmr_edl
         useCop1: true
@@ -134,15 +134,15 @@ dataLinks:
     port: 10025 # GS-Modem USLP telecommand port
     spacecraftId: 0x4F53 # "OS" in ASCII
     maxFrameLength: 1024 # Changing this temporarily because the c3 isn't setup to get USLP frames larger than 1024
-    # encryption:
-    #   - spi: 1
-    #     class: org.uniclogs.yamcs.tctm.OresatSdlsSecurityAssociationFactory
-    #     args:
-    #       keyFile: etc/oresat_key
+    encryption:
+      - spi: 1
+        class: org.uniclogs.yamcs.security.sdls.SecurityAssociationOresatSdlsFactory
+        args:
+          keyFile: etc/oresat_key
     virtualChannels:
     # EDL Virtual Channel
     - vcId: 0
-      # encryptionSpi: 1
+      encryptionSpi: 1
       service: PACKET
       priority: 0
       useCop1: true
