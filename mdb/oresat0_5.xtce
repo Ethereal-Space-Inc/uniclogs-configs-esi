@@ -221,14 +221,6 @@
           <Enumeration value="19" label="co_sdo_read" />
         </EnumerationList>
       </EnumeratedParameterType>
-      <BinaryParameterType name="bytes_hmac_type">
-        <UnitSet />
-        <BinaryDataEncoding bitOrder="leastSignificantBitFirst">
-          <SizeInBits>
-            <FixedValue>64</FixedValue>
-          </SizeInBits>
-        </BinaryDataEncoding>
-      </BinaryParameterType>
       <IntegerParameterType name="uint4_type" signed="false">
         <UnitSet />
         <IntegerDataEncoding byteOrder="leastSignificantByteFirst" encoding="unsigned" sizeInBits="4" />
@@ -387,7 +379,6 @@
       <Parameter name="cfc_processor_tec_status" parameterTypeRef="bool_type" shortDescription="the tec controller status" />
       <Parameter name="crc32" parameterTypeRef="uint32_type" shortDescription="beacon crc32" />
       <Parameter name="edl_command_code" parameterTypeRef="edl_command_code_type" />
-      <Parameter name="hmac" parameterTypeRef="bytes_hmac_type" />
       <Parameter name="uslp_fecf" parameterTypeRef="uint32_type" />
       <Parameter name="uslp_version_number" parameterTypeRef="uint4_type" />
       <Parameter name="uslp_spacecraft_id" parameterTypeRef="uint16_type" />
@@ -625,7 +616,6 @@
       <SequenceContainer name="tx_control_response">
         <EntryList>
           <ParameterRefEntry parameterRef="tx_control_status" />
-          <ParameterRefEntry parameterRef="hmac" />
         </EntryList>
       </SequenceContainer>
       <SequenceContainer name="co_node_enable_response">
@@ -693,7 +683,6 @@
           <ParameterRefEntry parameterRef="co_sdo_read_error_code" />
           <ParameterRefEntry parameterRef="co_sdo_read_buffer_size" />  
           <ParameterRefEntry parameterRef="co_sdo_read_buffer" />
-          <ParameterRefEntry parameterRef="hmac" />
         </EntryList>
       </SequenceContainer>
     </ContainerSet>

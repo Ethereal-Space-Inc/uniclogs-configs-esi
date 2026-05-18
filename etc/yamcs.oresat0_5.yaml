@@ -93,7 +93,7 @@ dataLinks:
     virtualChannels:
       # EDL Virtual Channel
       - vcId: 0
-        encryptionSpi: 1
+        encryptionSpis: [1]
         service: VCA # tells yamcs to use a custom handler instead of the default space/encaps packets handler.
         stream: tmr_edl
         useCop1: true
@@ -109,12 +109,12 @@ dataLinks:
 
       # CFDP Virtual Channel
       - vcId: 1
-        # encryptionSpi: 1
+        encryptionSpis: [1]
         service: VCA
         stream: cfdp_in
         vcaHandlerClassName: org.uniclogs.yamcs.tctm.CfdpVc1DownlinkHandler
         vcaHandlerArgs:
-          hmacKeyHex: "0000000000000000000000000000000000000000000000000000000000000000"
+          hmacKeyHex: "0000000000000000000000000000000000000000000000000000000000000000" # no longer needed beacase hell yeah.
           verifyHmac: false
           stripFecf: false # If we use the COP-1 branch of the c3 to test against, this instead strips part of the PDU.
           cfdpStream: cfdp_in
@@ -143,6 +143,7 @@ dataLinks:
     # EDL Virtual Channel
     - vcId: 0
       encryptionSpi: 1
+      encryptionSpis: [1]
       service: PACKET
       priority: 0
       useCop1: true
@@ -159,7 +160,8 @@ dataLinks:
 
     # CFDP Virtual Channel
     - vcId: 1
-      # encryptionSpi: 1
+      encryptionSpi: 1
+      encryptionSpis: [1]
       service: PACKET
       priority: 0
       maxPacketLength: 1000 # Changing this temporarily because the c3 isn't setup to get USLP frames larger than 1024
