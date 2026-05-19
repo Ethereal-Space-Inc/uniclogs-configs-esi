@@ -124,6 +124,8 @@ dataLinks:
           seqCountOffset: -1
           errorDetection:
             type: "NONE"
+      - vcId: 2
+        service: IDLE
 
   - name: tc_edl
     class: org.yamcs.tctm.ccsds.UdpTcFrameLink
