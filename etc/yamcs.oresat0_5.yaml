@@ -168,11 +168,11 @@ dataLinks:
       priority: 0
       maxPacketLength: 1000 # Changing this temporarily because the c3 isn't setup to get USLP frames larger than 1024
       stream: cfdp_tc
-      commandPostprocessorClassName: org.uniclogs.yamcs.tctm.EdlCommandPostprocessor
+      # commandPostprocessorClassName: org.uniclogs.yamcs.tctm.EdlCommandPostprocessor
       # commandPostprocessorArgs:
       #   errorDetection:
       #     type: "CRC-16-CCIIT"
-      #   enforceEvenNumberOfBytes: true
+      # #   enforceEvenNumberOfBytes: true
 
 mdb:
   - type: xtce
