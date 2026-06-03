@@ -182,9 +182,9 @@ mdb:
   - type: xtce
     spec: mdb/oresat0_5_beacon.xtce
   - type: xtce
-    spec: mdb/sentinel_1/LEOP_Beacon.xtce
+    spec: mdb/sentinel_1/leop_beacon.xtce
   - type: xtce
-    spec: mdb/sentinel_1/Post_LEOP.xtce
+    spec: mdb/sentinel_1/post_leop.xtce
 
 streamConfig:
   tm:
