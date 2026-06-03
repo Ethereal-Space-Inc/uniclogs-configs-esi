@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<SpaceSystem name="sentinel_post_leop" xmlns="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
+<SpaceSystem name="sentinel_leop" xmlns="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
   <Header validationStatus="Working" classification="NotClassified" version="0.0" date="2026-06-02">
     <AuthorSet>
       <Author>PSAS (Portland State Aerospace Society)</Author>
