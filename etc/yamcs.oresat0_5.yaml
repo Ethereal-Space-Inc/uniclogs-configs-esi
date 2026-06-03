@@ -176,24 +176,30 @@ dataLinks:
 
 mdb:
   - type: xtce
-    spec: mdb/oresat0_5.xtce
+    spec: mdb/oresat0_5_edl.xtce
   - type: xtce # the uplink handler needs a CFDP metacommand for things to work. This adds a single empty metacommand.
     spec: mdb/cfdp.xtce
+  - type: xtce
+    spec: mdb/oresat0_5_beacon.xtce
+  - type: xtce
+    spec: mdb/sentinel_1/LEOP_Beacon.xtce
+  - type: xtce
+    spec: mdb/sentinel_1/Post_LEOP.xtce
 
 streamConfig:
   tm:
     - name: tmr_beacon
-      rootContainer: /oresat0_5/beacon
+      rootContainer: /oresat0_5_beacon/Beacon
     
     - name: tmr_edl
       processor: realtime
-      rootContainer: /oresat0_5/edl_responses
+      rootContainer: /oresat0_5_edl/edl_responses
     
     - name: tmd_debug
 
   tc:
     - name: tcr_edl
-      rootContainer: /oresat0_5/edl_responses
+      rootContainer: /oresat0_5_edl/edl_responses
       processor: realtime
 
     - name: cfdp_tc
