@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <SpaceSystem name="sentinel_post_leop" xmlns="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
-  <Header validationStatus="Working" classification="NotClassified" version="0.0" date="2026-06-02">
+  <Header validationStatus="Working" classification="NotClassified" version="0.0" date="2026-06-08">
     <AuthorSet>
       <Author>PSAS (Portland State Aerospace Society)</Author>
     </AuthorSet>
@@ -346,48 +346,6 @@
       <Parameter name="solar_6_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
       <Parameter name="solar_6_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
       <Parameter name="solar_6_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_7_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_7_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_7_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_7_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_7_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_7_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_7_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_8_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_8_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_8_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_8_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_8_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_8_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_8_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_9_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_9_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_9_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_9_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_9_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_9_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_9_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_10_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_10_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_10_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_10_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_10_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_10_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_10_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_11_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_11_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_11_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_11_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_11_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_11_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_11_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
-      <Parameter name="solar_12_output_voltage_avg" parameterTypeRef="uint16_mV_type" shortDescription="average voltage" />
-      <Parameter name="solar_12_output_current_avg" parameterTypeRef="int16_mA_type" shortDescription="average current" />
-      <Parameter name="solar_12_output_power_avg" parameterTypeRef="uint16_mW_type" shortDescription="average power" />
-      <Parameter name="solar_12_output_voltage_max" parameterTypeRef="uint16_mV_type" shortDescription="max voltage" />
-      <Parameter name="solar_12_output_current_max" parameterTypeRef="int16_mA_type" shortDescription="max current" />
-      <Parameter name="solar_12_output_power_max" parameterTypeRef="uint16_mW_type" shortDescription="max power" />
-      <Parameter name="solar_12_output_energy" parameterTypeRef="uint16_mJ_type" shortDescription="storing energy" />
       <Parameter name="star_tracker_1_system_storage_percent" parameterTypeRef="uint8_percent_type" shortDescription="the current storage percent used" />
       <Parameter name="star_tracker_1_status" parameterTypeRef="uint8_star_tracker_1_status_type" shortDescription="" />
       <Parameter name="gps_scet" parameterTypeRef="uint64_type" shortDescription="CCSDS Unsegmented Time Code (CUC) object for Spacecraft Elapsed Time (SCET)" />
@@ -549,48 +507,6 @@
           <ParameterRefEntry parameterRef="solar_6_output_current_max" />
           <ParameterRefEntry parameterRef="solar_6_output_power_max" />
           <ParameterRefEntry parameterRef="solar_6_output_energy" />
-          <ParameterRefEntry parameterRef="solar_7_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_7_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_7_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_7_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_7_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_7_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_7_output_energy" />
-          <ParameterRefEntry parameterRef="solar_8_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_8_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_8_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_8_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_8_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_8_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_8_output_energy" />
-          <ParameterRefEntry parameterRef="solar_9_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_9_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_9_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_9_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_9_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_9_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_9_output_energy" />
-          <ParameterRefEntry parameterRef="solar_10_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_10_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_10_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_10_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_10_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_10_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_10_output_energy" />
-          <ParameterRefEntry parameterRef="solar_11_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_11_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_11_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_11_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_11_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_11_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_11_output_energy" />
-          <ParameterRefEntry parameterRef="solar_12_output_voltage_avg" />
-          <ParameterRefEntry parameterRef="solar_12_output_current_avg" />
-          <ParameterRefEntry parameterRef="solar_12_output_power_avg" />
-          <ParameterRefEntry parameterRef="solar_12_output_voltage_max" />
-          <ParameterRefEntry parameterRef="solar_12_output_current_max" />
-          <ParameterRefEntry parameterRef="solar_12_output_power_max" />
-          <ParameterRefEntry parameterRef="solar_12_output_energy" />
           <ParameterRefEntry parameterRef="star_tracker_1_system_storage_percent" />
           <ParameterRefEntry parameterRef="star_tracker_1_status" />
           <ParameterRefEntry parameterRef="gps_scet" />
