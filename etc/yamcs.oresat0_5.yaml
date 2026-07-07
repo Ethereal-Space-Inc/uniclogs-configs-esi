@@ -31,7 +31,7 @@ services:
     args:
      inactivityTimeout: 30000
      sequenceNrLength: 4
-     maxPduSize: 978  # Max size that can fit in a 1024 max size USLP frame
+     maxPduSize: 966  # Max size that can fit in a 1024 max size USLP frame
      incomingBucket: groundstation
      allowRemoteProvidedBucket: false
      allowRemoteProvidedSubdirectory: false
@@ -43,7 +43,7 @@ services:
      maxExistingFileRenames: 1000
      eofAckTimeout: 3000
      eofAckLimit: 5
-     sleepBetweenPdus: 1000
+     sleepBetweenPdus: 100
      maxNumPendingUploads: 1
      entityIdLength: 1
      # Entity IDs per oresat_c3/services/edl.py: SOURCE_ID=0 (ground), DEST_ID=1 (c3)
