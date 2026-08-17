@@ -466,12 +466,14 @@
           <Enumeration value="76" label="DxWiFi" />
           <Enumeration value="80" label="CFC Processor" />
           <Enumeration value="84" label="Diode Test" />
+          <Enumeration value="112" label="Science card" />
         </EnumerationList>
       </EnumeratedArgumentType>
       <EnumeratedArgumentType name="opd_addr_type">
         <UnitSet />
         <IntegerDataEncoding sizeInBits="8" encoding="unsigned" />
         <EnumerationList>
+          <Enumeration value="16" label="Science Card" />
           <Enumeration value="24" label="Battery 1" />
           <Enumeration value="26" label="ADCS" />
           <Enumeration value="32" label="Reaction Wheel 1" />
